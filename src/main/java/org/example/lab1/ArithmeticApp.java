@@ -1,11 +1,20 @@
 package org.example.lab1;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
-ValidityException;
 
 interface Operation {
     int doOperation(int a, int b);
+}
+
+// class representing custom exception
+class ValidityException extends Exception {
+    public ValidityException(String msg) {
+        // calling the constructor of parent Exception
+        super(msg);
+
+    }
 }
 
 class Add implements Operation {
@@ -14,6 +23,7 @@ class Add implements Operation {
         return a + b;
     }
 }
+
 class Subtract implements Operation {
     @Override
     public int doOperation(int a, int b) {
@@ -49,27 +59,61 @@ public class ArithmeticApp {
     public static final int[] supportedBases = {BINARY_BASE, OCTAL_BASE, DECIMAL_BASE, HEX_BASE};
 
 
-    private static int getBaseInput() {
+    private static int getBaseInput(String s) {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter base (2/8/10/16):");
+        System.out.println(s);
         return scanner.nextInt();
     }
 
-    private static boolean isValidBase(int base) {
-        return Arrays.asList(supportedBases).contains(base) ;
+    private static String getExpressionInput() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter expression:");
+        return scanner.nextLine();
     }
 
-    public static void main(String[] args) {
+    private static boolean isValidBase(int base) throws ValidityException {
+        boolean validBase = Arrays.asList(supportedBases).contains(base);   // BUG: doesn't assign correct boolean to validBase
+        if (!validBase) {
+            String msg = "Error – this base isn’t supported.";
+            throw new ValidityException(msg);
+        }
+        return true;
+    }
 
-        int base = getBaseInput();
-        isValidBase(base);
+    private static void isValidExpression(String expression) {
+//       Whatever Logic should be here...
+    }
 
-        String expression = getExpressionInput();
-        isValidExpression(expression);
+    private static void solve(String expression) {
 
-        solve(expression); // factory....
-
+        String msg = "The value of expression";
+        System.out.println(msg + expression);
 
     }
 
+    public static void session() {
+        int base = getBaseInput("Enter base (2/8/10/16):");
+        boolean valid = false;
+        try {
+            valid = isValidBase(base);
+        } catch (ValidityException e) {
+            System.out.println(e.getMessage());
+            base = getBaseInput("Please enter a base (2/8/10/16):");
+            try {
+                valid = isValidBase(base);
+            } catch (ValidityException exc) {
+                throw new RuntimeException(exc);
+            }
+        }
+        if (valid) {
+            String expression = getExpressionInput();
+            isValidExpression(expression);
+            solve(expression); // factory....
+        }
+
+    }
+
+    public static void main (String[]args){
+        ArithmeticApp.session();
+    }
 }
