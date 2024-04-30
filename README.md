@@ -7,7 +7,7 @@ Welcome to the Software Design Labs repository! This repository is dedicated to 
 - [Lab 1](src/main/java/org/example/lab1)
   - [Task 1 - MyFirstClass](src/main/java/org/example/lab1/MyFirstClass.java)
   - [Task 2 - Mul](src/main/java/org/example/lab1/Mul.java)
-  - [Task 3 - Arithmetic](src/main/java/org/example/lab1/ArithmeticApp.java)
+  - [Task 3 - ArithmeticApp](src/main/java/org/example/lab1/ArithmeticApp.java)
 - [Lab 2](src/main/java/org/example/lab2)
   - Reserved for future files of Lab 2
   - ...
