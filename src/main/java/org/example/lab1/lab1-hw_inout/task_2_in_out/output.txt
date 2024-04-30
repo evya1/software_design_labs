@@ -1,0 +1,8 @@
+Please enter 2 integers that you want to multiply up
+First 
+Second 
+The product of 4 and 6 is 24
+Please enter 2 integers that you want to multiply up
+First 
+Second 
+The product of 1 and 2 is 2
