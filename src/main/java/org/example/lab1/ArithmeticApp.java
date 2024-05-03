@@ -99,27 +99,26 @@ public class ArithmeticApp {
      * @param expressionParts The list of expression parts (operands and operators).
      * @return The result of evaluating the expression as a string representation in the specified base.
      */
-    private static String solve(ArrayList<String> expressionParts, int base) {
-        Stack<Integer> operandsStack = new Stack<>();
+    private static double solve(ArrayList<String> expressionParts, int base) {
+        Stack<Double> operandsStack = new Stack<>();
         Stack<Character> operatorsStack = new Stack<>();
 
         for (String part : expressionParts) {
             if (supportedOperators.contains(part.charAt(0))) {
                 char operator = part.charAt(0);
                 while (!operatorsStack.isEmpty() && hasPriorityOver(operator, operatorsStack.peek())) {
-                    operandsStack.push(applyOperator(operatorsStack.pop(), operandsStack.pop(), operandsStack.pop()));
+                    operandsStack.push((double) applyOperator(operatorsStack.pop(), operandsStack.pop(), operandsStack.pop()));
                 }
                 operatorsStack.push(operator);
             } else {
-                operandsStack.push(Integer.parseInt(part, base));
+                operandsStack.push(Double.parseDouble(part));
             }
         }
 
         while (!operatorsStack.isEmpty()) {
-            operandsStack.push(applyOperator(operatorsStack.pop(), operandsStack.pop(), operandsStack.pop()));
+            operandsStack.push((double) applyOperator(operatorsStack.pop(), operandsStack.pop(), operandsStack.pop()));
         }
-        int result = operandsStack.pop();
-        return Integer.toString(result, base).toUpperCase();
+        return operandsStack.pop();
     }
 
 
@@ -143,7 +142,7 @@ public class ArithmeticApp {
      * @return The result of applying the operator on the operands.
      * @throws UnsupportedOperationException If attempting to divide by zero when the operator is '/'.
      */
-    public static int applyOperator(char operator, int operandB, int operandA) {
+    public static double applyOperator(char operator, Double operandB, Double operandA) {
         return switch (operator) {
             case ADDITION -> operandA + operandB;
             case SUBTRACTION -> operandA - operandB;
@@ -200,7 +199,7 @@ public class ArithmeticApp {
             ArrayList<String> expressionParts = new ArrayList<>();
             try {
                 isValidExpression(expression, base, expressionParts);
-                solution = solve(expressionParts, base);
+                solution = String.valueOf((int) solve(expressionParts, base));
                 String msg = "The value of expression " + expression + " is : " + solution;
                 System.out.println(msg);
             } catch (ArithmeticException e) {
