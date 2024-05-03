@@ -1,5 +1,6 @@
 package org.example.lab1;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 public class ArithmeticApp {
@@ -111,7 +112,11 @@ public class ArithmeticApp {
                 }
                 operatorsStack.push(operator);
             } else {
+                try {
                 operandsStack.push(Double.parseDouble(part));
+                } catch (NumberFormatException e) {
+                    operandsStack.push((double) Integer.parseInt(part,base));
+                }
             }
         }
 
