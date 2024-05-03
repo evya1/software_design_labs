@@ -173,20 +173,26 @@ public class ArithmeticApp {
     public static void session() {
         int base = getBaseInput("Enter base (2/8/10/16):");
         scanner.nextLine();
-        boolean valid;
+        boolean invalidBase;
         String solution;
         try {
-            valid = isValidBase(base);
+            invalidBase = isValidBase(base);
         } catch (ValidityException e) {
             System.out.println(e.getMessage());
-            base = getBaseInput("Please enter a base (2/8/10/16):");
-            try {
-                valid = isValidBase(base);
-            } catch (ValidityException exc) {
-                throw new RuntimeException(exc);
-            }
+            do {
+                base = getBaseInput("Please enter a base (2/8/10/16):");
+                try {
+                    invalidBase = isValidBase(base);
+                    scanner.nextLine();
+                    break;
+
+                } catch (ValidityException exc) {
+                    invalidBase = true;
+                    System.out.println(exc.getMessage());
+                }
+            } while (invalidBase);
         }
-        if (valid) {
+        if (invalidBase) {
             // Create a mutable object to hold the expression, allowing for modification if necessary
             String expression = getExpressionInput();
             ArrayList<String> expressionParts = new ArrayList<>();
