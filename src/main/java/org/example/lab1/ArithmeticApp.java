@@ -37,8 +37,7 @@ public class ArithmeticApp {
     /**
      * Checks if the given string representation is valid for the specified base.
      *
-     * @param str  The string representation to check.
-     * @param base The base in which to interpret the string representation.
+     * @param str The string representation to check.
      * @return {@code true} if the string representation is valid for the given base, {@code false} otherwise.
      */
     public static boolean isInGivenBase(String str, int base) {
@@ -98,7 +97,6 @@ public class ArithmeticApp {
      * </p>
      *
      * @param expressionParts The list of expression parts (operands and operators).
-     * @param base            The base of the numeric operands in the expression.
      * @return The result of evaluating the expression as a string representation in the specified base.
      */
     private static String solve(ArrayList<String> expressionParts, int base) {
@@ -120,9 +118,7 @@ public class ArithmeticApp {
         while (!operatorsStack.isEmpty()) {
             operandsStack.push(applyOperator(operatorsStack.pop(), operandsStack.pop(), operandsStack.pop()));
         }
-
         int result = operandsStack.pop();
-
         return Integer.toString(result, base).toUpperCase();
     }
 
@@ -160,9 +156,14 @@ public class ArithmeticApp {
         };
     }
 
-    private static int getBaseInput(String s) {
+    private static int getBaseInput(String s) throws ValidityException{
         System.out.println(s);
+        while (!scanner.hasNextInt()) {
+            scanner.next(); // Clear the invalid input
+            throw new ValidityException("Error – this base isn’t supported.");
+        }
         return scanner.nextInt();
+
     }
 
     private static String getExpressionInput() {
@@ -171,17 +172,18 @@ public class ArithmeticApp {
     }
 
     public static void session() {
-        int base = getBaseInput("Enter base (2/8/10/16):");
-        scanner.nextLine();
+        int base = 0;
         boolean invalidBase;
         String solution;
         try {
+            base = getBaseInput("Enter base (2/8/10/16):");
+            scanner.nextLine();
             invalidBase = isValidBase(base);
         } catch (ValidityException e) {
             System.out.println(e.getMessage());
             do {
-                base = getBaseInput("Please enter a base (2/8/10/16):");
                 try {
+                    base = getBaseInput("Please enter a base (2/8/10/16):");
                     invalidBase = isValidBase(base);
                     scanner.nextLine();
                     break;
