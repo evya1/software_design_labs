@@ -11,6 +11,8 @@ Welcome to the Software Design Labs repository! This repository is dedicated to 
 - [Lab 2 - Threads](src/main/java/org/example/lab2)
   - [Task 1 - instance of Thread type](src/main/java/org/example/lab2/task_1.md)
   - ...
+- [Lab 3 - JavaFX](lab_3)
+  - [Intro 1 - hello_jfx](lab_3/src/main/java/org/example/hello_jfx/App.java)
   
 
 ## Important Files
