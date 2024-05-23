@@ -1,14 +1,15 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.net.URL;
-import java.util.Arrays;
-import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Button;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.ResourceBundle;
 
 public class PrimaryController {
     private String currentExpression = "";
@@ -49,7 +50,7 @@ public class PrimaryController {
             actionButtonsFlag = true;
         }
         updateButtons(currentBase);
-        if(currentExpression != ""){
+        if (!currentExpression.isEmpty()) {
             result(event);
         }
     }
@@ -78,7 +79,7 @@ public class PrimaryController {
     void addToExpression(ActionEvent event) {
         Button btn = (Button) event.getSource();
         currentExpression += btn.getText();
-        resultTF.setText(currentExpression.toString());
+        resultTF.setText(currentExpression);
     }
 
     @FXML
