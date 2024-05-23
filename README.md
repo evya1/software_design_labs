@@ -11,9 +11,12 @@ Welcome to the Software Design Labs repository! This repository is dedicated to 
 - [Lab 2 - Threads](src/main/java/org/example/lab2)
   - [Task 1 - instance of Thread type](src/main/java/org/example/lab2/task_1.md)
   - ...
-- [Lab 3 - JavaFX](lab_3)
-  - [Intro 1 - hello_jfx](lab_3/src/main/java/org/example/hello_jfx/App.java)
-  
+- [Lab 3 - JavaFX](lab_3/src/main/java/org/example)
+  - [App.java](lab_3/src/main/java/org/example/App.java)
+  - [ArithmeticApp.java](lab_3/src/main/java/org/example/ArithmeticApp.java)
+  - [PrimaryController.java](lab_3/src/main/java/org/example/PrimaryController.java)
+  - [SecondaryController.java](lab_3/src/main/java/org/example/SecondaryController.java)
+  - [primary.fxml](lab_3/src/main/java/org/example/primary.fxml)
 
 ## Important Files
 
