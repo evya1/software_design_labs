@@ -175,68 +175,6 @@ public class ArithmeticApp {
         }
     }
 
-//    public static int getBaseInput(String s) throws ValidityException{
-//        System.out.println(s);
-//        while (!scanner.hasNextInt()) {
-//            scanner.next(); // Clear the invalid input
-//            throw new ValidityException("Error – this base isn’t supported.");
-//        }
-//        return scanner.nextInt();
-//
-//    }
-//
-//    public static String getExpressionInput() {
-//        System.out.println("Enter expression:");
-//        return scanner.nextLine();
-//    }
-//
-//    public static void session() {
-//        int base = 0;
-//        boolean invalidBase;
-//        String solution;
-//        try {
-//            base = getBaseInput("Enter base (2/8/10/16):");
-//            scanner.nextLine();
-//            invalidBase = isValidBase(base);
-//        } catch (ValidityException e) {
-//            System.out.println(e.getMessage());
-//            do {
-//                try {
-//                    base = getBaseInput("Please enter a base (2/8/10/16):");
-//                    invalidBase = isValidBase(base);
-//                    scanner.nextLine();
-//                    break;
-//
-//                } catch (ValidityException exc) {
-//                    invalidBase = true;
-//                    System.out.println(exc.getMessage());
-//                }
-//            } while (invalidBase);
-//        }
-//        if (invalidBase) {
-//            // Create a mutable object to hold the expression, allowing for modification if necessary
-//            String expression = getExpressionInput();
-//            ArrayList<String> expressionParts = new ArrayList<>();
-//            try {
-//                isValidExpression(expression, base, expressionParts);
-//                solution = solve(expressionParts, base);
-//                String msg = "The value of expression " + expression + " is : " + solution;
-//                System.out.println(msg);
-//            } catch (ArithmeticException e) {
-//                System.out.println("invalid expression: " + expression);
-//            } catch (UnsupportedOperationException e) {
-//                System.out.println("Error: trying to divide by 0 (evaluated: \"0\")");
-//            } catch (EmptyStackException e) {
-//                System.out.println("Error: invalid expression: \"\"");
-//            }
-//        }
-//        scanner.close();
-//    }
-//
-//    public static void main(String[] args) {
-//        ArithmeticApp.session();
-//    }
-
     static class ValidityException extends Exception {
         public ValidityException(String msg) {
             super(msg);
