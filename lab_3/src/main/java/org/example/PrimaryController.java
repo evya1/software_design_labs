@@ -92,9 +92,11 @@ public class PrimaryController {
         ArrayList<String> expressionParts = new ArrayList<>();
         ArithmeticApp.isValidExpression(currentExpression, currentBase, expressionParts);
         try {
-            double result = ArithmeticApp.solve(expressionParts, currentBase);
-            currentExpression = String.valueOf(result);
-            resultTF.setText(currentExpression);
+            double solvedResult = ArithmeticApp.solve(expressionParts, currentBase);
+            int integerResult = (int) solvedResult;
+            String resultInBase = Integer.toString(integerResult, currentBase).toUpperCase();
+            currentExpression = resultInBase;
+            resultTF.setText(resultInBase);
         } catch (ArithmeticException e) {
             resultTF.setText("Invalid Expression");
             currentExpression = "";
