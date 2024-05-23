@@ -15,6 +15,8 @@ public class PrimaryController {
     private String currentExpression = "";
     private int currentBase;
     private boolean actionButtonsFlag = false;
+    private int result;
+
     @FXML
     private ResourceBundle resources;
 
@@ -41,19 +43,37 @@ public class PrimaryController {
 
     @FXML
     void chooseBase(ActionEvent event) {
+        int oldBase = currentBase;
         currentBase = listBox.getSelectionModel().getSelectedItem();
+
+        // Activate action buttons if not already activated
         if (!actionButtonsFlag) {
-            int i = 0;
-            for (; i < actionButtonList.size(); i++) {
-                actionButtonList.get(i).setDisable(false);
+            for (Button button : actionButtonList) {
+                button.setDisable(false);
             }
             actionButtonsFlag = true;
         }
+
+        // Update button activation based on the new base
         updateButtons(currentBase);
+
+        // Check if there's a result or expression
         if (!currentExpression.isEmpty()) {
-            result(event);
+            if (oldBase != currentBase) {
+                // If there's a result, format it to the new base
+                try {
+                    int result = Integer.parseInt(resultTF.getText(), oldBase);
+                    resultTF.setText(Integer.toString(result, currentBase).toUpperCase());
+                } catch (NumberFormatException e) {
+                    resultTF.setText("Invalid Result");
+                }
+            } else {
+                // If there's an expression waiting to be solved
+                result(event);
+            }
         }
     }
+
 
     @FXML
     void initialize() {
@@ -96,8 +116,8 @@ public class PrimaryController {
             double solvedResult = ArithmeticApp.solve(expressionParts, currentBase);
             int integerResult = (int) solvedResult;
             String resultInBase = Integer.toString(integerResult, currentBase).toUpperCase();
-            currentExpression = resultInBase;
             resultTF.setText(resultInBase);
+            currentExpression = resultInBase;
         } catch (ArithmeticException e) {
             resultTF.setText("Invalid Expression");
             currentExpression = "";
