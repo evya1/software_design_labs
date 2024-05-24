@@ -46,29 +46,28 @@ public class PrimaryController {
         int oldBase = currentBase;
         currentBase = listBox.getSelectionModel().getSelectedItem();
 
-        // Activate action buttons if not already activated
-        if (!actionButtonsFlag) {
+        boolean areActionButtonsInactive = !actionButtonsFlag;
+        if (areActionButtonsInactive) {
             for (Button button : actionButtonList) {
                 button.setDisable(false);
             }
             actionButtonsFlag = true;
         }
 
-        // Update button activation based on the new base
         updateButtons(currentBase);
 
-        // Check if there's a result or expression
-        if (!currentExpression.isEmpty()) {
+        boolean hasPendingExpression = !currentExpression.isEmpty();
+        if (hasPendingExpression) {
             if (oldBase != currentBase) {
-                // If there's a result, format it to the new base
                 try {
                     int result = Integer.parseInt(resultTF.getText(), oldBase);
-                    resultTF.setText(Integer.toString(result, currentBase).toUpperCase());
+                    String resultInNewBase = Integer.toString(result, currentBase).toUpperCase();
+                    resultTF.setText(resultInNewBase);
+                    currentExpression = resultInNewBase;
                 } catch (NumberFormatException e) {
                     resultTF.setText("Invalid Result");
                 }
             } else {
-                // If there's an expression waiting to be solved
                 result(event);
             }
         }
