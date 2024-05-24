@@ -124,7 +124,7 @@ public class ArithmeticApp {
                 if (base == 16) {
                     operandValue = Integer.parseInt(part, base);
                 } else {
-                    operandValue = Integer.parseInt(part);
+                    operandValue = Integer.parseInt(part, base);
                 }
                 if (!hasOperator) {
                     // If there is no operator, apply the base directly to the operand

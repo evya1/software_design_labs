@@ -30,9 +30,7 @@ public class PrimaryController {
     private TextField resultTF;
 
     @FXML
-    private Button oneBtn, twoBtn, threeBtn, fourBtn, fiveBtn, sixBtn, sevenBtn, eightBtn, nineBtn, zeroBtn,
-            plusBtn, minusBtn, multBtn, divBtn, resultBtn, clearBtn,
-            aHexaBtn, bHexaBtn, cHexaBtn, dHexaBtn, eHexaBtn, fHexaBtn;
+    private Button oneBtn, twoBtn, threeBtn, fourBtn, fiveBtn, sixBtn, sevenBtn, eightBtn, nineBtn, zeroBtn, plusBtn, minusBtn, multBtn, divBtn, resultBtn, clearBtn, aHexaBtn, bHexaBtn, cHexaBtn, dHexaBtn, eHexaBtn, fHexaBtn;
 
     @FXML
     private ArrayList<Button> buttonList;
@@ -79,8 +77,7 @@ public class PrimaryController {
         assert listBox != null : "fx:id=\"listBox\" was not injected: check your FXML file 'primary.fxml'.";
         listBox.getItems().addAll(2, 8, 10, 16);
         actionButtonList = new ArrayList<>(Arrays.asList(plusBtn, minusBtn, multBtn, divBtn, resultBtn));
-        buttonList = new ArrayList<>(Arrays.asList(zeroBtn, oneBtn, twoBtn, threeBtn, fourBtn, fiveBtn, sixBtn, sevenBtn, eightBtn, nineBtn,
-                aHexaBtn, bHexaBtn, cHexaBtn, dHexaBtn, eHexaBtn, fHexaBtn));
+        buttonList = new ArrayList<>(Arrays.asList(zeroBtn, oneBtn, twoBtn, threeBtn, fourBtn, fiveBtn, sixBtn, sevenBtn, eightBtn, nineBtn, aHexaBtn, bHexaBtn, cHexaBtn, dHexaBtn, eHexaBtn, fHexaBtn));
     }
 
     private void updateButtons(int base) {
