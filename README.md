@@ -10,13 +10,17 @@ Welcome to the Software Design Labs repository! This repository is dedicated to 
   - [Task 3 - ArithmeticApp](src/main/java/org/example/lab1/ArithmeticApp.java)
 - [Lab 2 - Threads](src/main/java/org/example/lab2)
   - [Task 1 - instance of Thread type](src/main/java/org/example/lab2/task_1.md)
-  - ...
 - [Lab 3 - JavaFX](lab_3/src/main/java/org/example)
-  - [App.java](lab_3/src/main/java/org/example/App.java)
+  - [App](lab_3/src/main/java/org/example/App.java)
   - [ArithmeticApp.java](lab_3/src/main/java/org/example/ArithmeticApp.java)
   - [PrimaryController.java](lab_3/src/main/java/org/example/PrimaryController.java)
   - [SecondaryController.java](lab_3/src/main/java/org/example/SecondaryController.java)
   - [primary.fxml](lab_3/src/main/java/org/example/primary.fxml)
+- [Lab 7 - ORM](lab_7/src/main/java/org/example)
+  - [App](lab_3/src/main/java/org/example/App.java)
+  - [Car](lab_3/src/main/java/org/example/Car.java)
+  - [hibernate.properties](lab_7/src/main/resources/hibernate.properties) - hibernate configuration
+  - [Lab 7 POM.XML](lab_7/pom.xml) - Lab 7 pom.xml
 
 ## Important Files
 
